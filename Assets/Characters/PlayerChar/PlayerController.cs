@@ -9,8 +9,12 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 1f;
     public float collisionOffset = 0.05f;
     public ContactFilter2D movementFilter;
+    public SwordAttack swordAttack;
 
     Vector2 movementInput;
+
+    SpriteRenderer spriteRenderer;
+
     Rigidbody2D rb;
 
     Animator animator;
@@ -23,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer =  GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -44,7 +49,12 @@ public class PlayerController : MonoBehaviour
         } else {
             animator.SetBool("IsMoving", false);
         }
-
+        // flip the sprite
+        if(movementInput.x < 0) {
+        spriteRenderer.flipX = true;
+         } else if (movementInput.x > 0) {
+        spriteRenderer.flipX = false;
+        }
       }
     } 
 
@@ -77,6 +87,21 @@ public class PlayerController : MonoBehaviour
 
     void OnFire() {
         animator.SetTrigger("sAttack");
+    }
+
+    public void SwordAttack() {
+        LockMovement();
+
+        if(spriteRenderer.flipX == true) {
+            swordAttack.AttackLeft();
+        } else {
+            swordAttack.AttackRight();
+        }
+    }
+
+    public void StopAttack() {
+        UnlockMovement();
+        swordAttack.StopAttack();
     }
 
     public void LockMovement() {
