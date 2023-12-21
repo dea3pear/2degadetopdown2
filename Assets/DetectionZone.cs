@@ -11,6 +11,8 @@ public class DetectionZone : MonoBehaviour
 
     public Collider2D col;
 
+    public float damage = -1;
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         if(collider.gameObject.tag == tagTarget) {

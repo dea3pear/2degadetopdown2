@@ -30,7 +30,6 @@ public class EnemyScript : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D col) {
         {
         Debug.Log("Entered trigger with tag: " + col.tag);
-        if (col.CompareTag("Enemy") || col.CompareTag("Player") && col.GetComponent<IDamageable>() != null)
         {
             IDamageable damageable = col.GetComponent<IDamageable>();
 

@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 453070e8fb54eeb4183bdbe891a8fafc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 1.35
   collisionOffset: 0.02
   movementFilter:
     useTriggers: 0
@@ -256,7 +256,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
